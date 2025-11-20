@@ -40,134 +40,85 @@ Before starting my analysis, take some time to familiarize myself with the datas
 #### Exercise 1: Set the Index
 Explore the dataset to find the number of rows, columns, and data types of each feature. Identify any missing values.
 
-## Task 3: Data Analysis
+## Task 3: Retrieving key metrics
+To recommend loan offers, take a moment to understand the loan amounts and ratings. I’ll also want to get a rough idea of the interest rates being paid.
 
-<img width="926" height="517" alt="Screenshot (11)" src="https://github.com/user-attachments/assets/413f6dc7-1d72-415a-947f-603606afdb5c" />
+### Describing the dataset
 
-<img width="944" height="477" alt="Screenshot (12)" src="https://github.com/user-attachments/assets/1cf0b325-57c1-43c0-879b-a9feeb0a9db6" />
+#### Exercise 2: descriptive statistics
 
-<img width="410" height="256" alt="Screenshot (13)" src="https://github.com/user-attachments/assets/10e0a307-66f1-4a69-8329-36f3329e913c" />
+### High-Risk Customers
+Customers with a high debt-to-income ratio and less job stability may have more difficulty repaying loans, making them riskier.
 
-<img width="1183" height="398" alt="Screenshot (14)" src="https://github.com/user-attachments/assets/0ebd594a-62eb-46bb-9d5b-6ac239fee8ac" />
 
-<img width="1177" height="400" alt="Screenshot (15)" src="https://github.com/user-attachments/assets/25934891-1310-40ad-a487-c942b5f2232b" />
+#### Exercise 3: Identifying High-Risk Customers
+I want to identify these customers and be able to add a flag to their loans. I consider borrowers to have less job stability if they have been on the current job for less than 1 year (including those in the trial period). In this scenario, a loan-to-rate ratio above 0.35 is considered risky.
 
-<img width="744" height="465" alt="Screenshot (16)" src="https://github.com/user-attachments/assets/4487feac-4472-44f4-ac76-8d6c7542f4a5" />
 
-<img width="392" height="280" alt="Screenshot (17)" src="https://github.com/user-attachments/assets/bc94e6c0-c770-4547-b447-bda7579cf637" />
+#### Implications:
 
-<img width="555" height="506" alt="Screenshot (18)" src="https://github.com/user-attachments/assets/072ea586-e744-4b35-ad2e-63891046f3d7" />
+* Risky loans mean interest rate: 28.86% Non-risky loans mean interest rate: 26.99%
 
-<img width="615" height="356" alt="Screenshot (19)" src="https://github.com/user-attachments/assets/81ce4ea6-1124-4c5a-8bf1-5272d917247f" />
+* Risk premium: risky loans are about 1.87 percentage points higher than non-risky loans (28.86% − 26.99% ≈ 1.87%). Does this reflect a riskier nature?
 
-## Task 4: Sales Trend over Time
+* Yes. The higher rate for riskier loans is consistent with risk-based pricing: lenders charge more to compensate for the higher likelihood of default. Since risky loans only make up about 15.88% of the data, their impact on the overall average rate is present but modest. The total dataset rate should sit between the two subgroup means and be closer to the non-risky rate due to the larger share of non-risky loans.
 
-<img width="754" height="329" alt="Screenshot (20)" src="https://github.com/user-attachments/assets/06b6e02f-1ea3-41e2-bda1-fc569666d954" />
 
-<img width="864" height="509" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/e0b033a0-6f32-4100-a8cd-381cd22b757d" />
+## Task 4: Understanding different customer profiles
 
-<img width="737" height="524" alt="Screenshot (22)" src="https://github.com/user-attachments/assets/c2b76e41-c059-47c5-81e7-d747a8682e32" />
+As a fintech analyst, understanding customer profiles allows me to identify patterns. I want to understand how different factors of the borrowers influence loan applications.
 
-<img width="650" height="533" alt="Screenshot (23)" src="https://github.com/user-attachments/assets/8736ecca-9a9c-42bb-9912-838997031285" />
+### Visualization of different profiles
+To help my identify the different profiles, I decide to use my visualization skills to uncover actionable patterns for tailoring loan offers.
 
-<img width="1175" height="533" alt="Screenshot (24)" src="https://github.com/user-attachments/assets/75827b52-f98e-4f2c-9fc7-af16b2bcf394" />
+#### Exercise 4: Segmentation using box plots
 
-<img width="303" height="158" alt="Screenshot (25)" src="https://github.com/user-attachments/assets/fb01f6c6-b4e7-4afa-8411-356607e3e558" />
+#### Exercise 5: Scatter plots and correlation
+I also want to investigate the relationship between certain numerical features and the interest rate. For that, I decide to use scatter plots, along with the correlation between features.
 
-<img width="1164" height="508" alt="Screenshot (26)" src="https://github.com/user-attachments/assets/1ba82c6f-f25f-4812-a712-c5ff3bf1f59a" />
+#### Implication:
+* AmountOfPreviousLoansBeforeLoan (r = -0.175) This is the only feature among those four with a modest negative linear relationship to interest rate. In practical terms: Borrowers with more prior loans tend to receive slightly lower interest rates on new loans.Having more prior loans could signal reliability or familiarity with debt management, which modestly mitigates default risk, hence a cheaper rate.
 
-<img width="1176" height="486" alt="Screenshot (27)" src="https://github.com/user-attachments/assets/cdcd55db-a5c1-4736-bbea-f00d3d9be8ed" />
+* The negative sign aligns with risk-based pricing: more established credit behavior tends.
 
-<img width="290" height="126" alt="Screenshot (28)" src="https://github.com/user-attachments/assets/4d1d8228-26c0-4444-b76b-3264441e65dc" />
+* The effect is small, but it’s the strongest signal among the four features you reported.
 
-<img width="1166" height="507" alt="Screenshot (29)" src="https://github.com/user-attachments/assets/4147bc01-2493-4df7-9f9f-dd0ef319c48b" />
 
-<img width="387" height="82" alt="Screenshot (30)" src="https://github.com/user-attachments/assets/8d3bd363-5796-4409-84f7-6f27e672b811" />
+### Applied and Received Amounts
+I noticed that there are two similar columns, "AppliedAmount" and "Amount", in the dataset. This implies that sometimes borrowers get loaned a different amount than what they asked for.
 
-## Task 5: Top-selling Products and Countries
+#### Exercise 6: Confidence Intervals
+If more than 5% of loans are approved for less than requested, the team may need to revise how loan amounts are communicated to applicants. Estimate this proportion using a confidence interval to support your recommendation.
 
-<img width="634" height="509" alt="Screenshot (31)" src="https://github.com/user-attachments/assets/dd7179d2-52ad-4992-8027-452ade9e9ff5" />
+The proportion of loans where the requested amount differs from the given amount is pretty small, so it should be safe to only analyze one of those columns.
 
-<img width="868" height="520" alt="Screenshot (32)" src="https://github.com/user-attachments/assets/e190204c-927f-404a-b7a4-c2042014dba3" />
+## Task 5: Modelling the Interest Rate
+To make personalized loan offers, I decide to go one step further in my analysis and build a model to predict interest rates using different customer features. This will help me both be able to predict interest rates for new customers, and observe which features are actually statistically significant in determining the interest rates.
 
-<img width="1174" height="516" alt="Screenshot (33)" src="https://github.com/user-attachments/assets/a9766b1d-45f5-48ab-9689-cff449b4b371" />
 
-<img width="485" height="101" alt="Screenshot (34)" src="https://github.com/user-attachments/assets/b46e5868-18b7-4e02-b7d7-20ac1b4d4094" />
+### Simple Linear Regression
+To get my first model going I begin creating a simple linear regression. Based on the correlation analysis I did before, a good candidate for the independent variable is "AmountOfPreviousLoansBeforeLoan", which presented the strongest correlation with the target variable "Interest".
 
-<img width="1174" height="366" alt="Screenshot (35)" src="https://github.com/user-attachments/assets/437e97af-f938-4361-8aaa-d07992053360" />
+#### Exercise 7: Training the Linear Regression
 
-<img width="1170" height="377" alt="Screenshot (36)" src="https://github.com/user-attachments/assets/081a74e7-ebc3-46bc-be18-a08e906db411" />
 
-<img width="545" height="232" alt="Screenshot (37)" src="https://github.com/user-attachments/assets/0e6ab90a-a68b-4c6d-b1b4-9d4314fed67b" />
 
-## Task 6: Outlier Detection and Analysis
 
-<img width="790" height="520" alt="Screenshot (38)" src="https://github.com/user-attachments/assets/f247c6df-3f46-469a-bd35-de730e98545c" />
+Use this next cell to make some further analysis on my model. I are already given the line of best fit graph, but can add as many visualizations as I wish.
 
-<img width="352" height="232" alt="Screenshot (40)" src="https://github.com/user-attachments/assets/debabf7b-06c5-418f-ba9b-51aec275cd37" />
 
-<img width="1190" height="390" alt="Screenshot (41)" src="https://github.com/user-attachments/assets/cc6fbc12-0b25-4db3-b571-2390a4667d40" />
 
-<img width="1132" height="392" alt="Screenshot (42)" src="https://github.com/user-attachments/assets/a0712aea-ccef-461a-ab09-a1a16caa5ee4" />
 
-<img width="697" height="422" alt="Screenshot (43)" src="https://github.com/user-attachments/assets/7b3a8d97-cb12-4f6e-929a-dad3b0746762" />
+The predictor AmountOfPreviousLoansBeforeLoan has a statistically significant negative association with Interest (coefficient ≈ -0.0006, p < 0.001), but the model’s R-squared is only 0.031. So it’s unlikely this single predictor meaningfully explains variability in interest.
 
-## Task 7: Customer Purchase Pattern and Summary
+### Building a More Complex Linear Regression Model
+Since predicting the interest rate using a single variable didn’t yield strong results, I decide to take a more comprehensive approach. This time, I’ll build a more complex model that includes multiple variables—possibly even some categorical ones.
 
-<img width="720" height="528" alt="Screenshot (44)" src="https://github.com/user-attachments/assets/73adacd8-d9bf-4121-b559-d2d06575a5c7" />
+This time I would use VerificationType, NoOfPreviousLoansBeforeLoan, AmountOfPreviousLoansBeforeLoan, Rating as my predictors.
 
-<img width="1183" height="494" alt="Screenshot (45)" src="https://github.com/user-attachments/assets/29779261-5706-4c3b-a6f2-a9e719d7843f" />
+#### Exercise 8: Building and refining the model
 
-<img width="409" height="429" alt="Screenshot (46)" src="https://github.com/user-attachments/assets/b2641809-3f68-41bd-ac17-c901a4934897" />
 
-<img width="320" height="172" alt="Screenshot (47)" src="https://github.com/user-attachments/assets/902096e3-4671-4d34-bac4-394c04c30810" />
+## Key Summary:
 
-## Task 8: Key findings and Conclusion
-
-<img width="1161" height="514" alt="Screenshot (48)" src="https://github.com/user-attachments/assets/186de33c-2fc0-4554-a058-7d36959b832e" />
-
-<img width="756" height="524" alt="Screenshot (49)" src="https://github.com/user-attachments/assets/50a4d171-d934-4c99-9f95-ec8c3948a1db" />
-
-<img width="832" height="521" alt="Screenshot (50)" src="https://github.com/user-attachments/assets/4cd98f35-9ddc-495f-a918-5534de4413da" />
-
-<img width="671" height="497" alt="Screenshot (51)" src="https://github.com/user-attachments/assets/c964e35c-0773-4652-953f-80114bf54f7e" />
-
-<img width="928" height="514" alt="Screenshot (52)" src="https://github.com/user-attachments/assets/cb2e1a6d-09c4-45ab-9da7-1a889d0de39b" />
-
-<img width="1183" height="520" alt="Screenshot (53)" src="https://github.com/user-attachments/assets/a4944961-85c3-460e-8de8-a282cb4aed0f" />
-
-<img width="1094" height="527" alt="Screenshot (54)" src="https://github.com/user-attachments/assets/0a280617-fe7f-4875-80ab-6877dd006b72" />
-
-## Executive Summary
-
-<img width="814" height="535" alt="Screenshot (55)" src="https://github.com/user-attachments/assets/19b05dcc-ea94-41c7-bf77-b165fa1ce165" />
-
-Based on the comprehensive analysis of the online retail dataset, here are the most important insights:
-
-1. **Sales Patterns**:
-   - Sales show clear seasonal patterns with specific peak months
-   - Weekdays generate significantly more revenue than weekends
-   - Specific hours of the day show consistently higher transaction volumes
-
-2. **Geographic Distribution**:
-   - Sales are heavily concentrated in a few key markets
-   - The UK likely represents the primary market with the highest sales volume
-   - International markets show varying levels of engagement and potential for growth
-
-3. **Product Performance**:
-   - Gift items and home accessories appear frequently among top sellers
-   - There is a notable difference between products that sell in high quantities versus those that generate high revenue
-   - Certain products show seasonal popularity patterns
-
-4. **Customer Behavior**:
-   - The customer base follows the Pareto principle (roughly 20% of customers generate 80% of revenue)
-   - Purchase frequency varies widely across the customer base
-   - Average order values suggest a mid-range retail price point
-
-5. **Outliers and Special Cases**:
-   - Bulk orders significantly impact average metrics
-   - Some extremely high-value transactions suggest B2B or wholesale activity
-   - Unusual purchasing patterns may indicate special events or promotional activities
-
-These insights can guide strategic decisions in inventory management, marketing campaigns, customer retention programs, and international expansion efforts. The data suggests opportunities for targeted promotions during slower periods, loyalty programs for high-value customers, and specialized approaches for different market segments.
-
+The model explains about 60% of the variation in Interest (R-squared ≈ 0.605). The strongest drivers are the rating categories (Rating_AA through Rating_HR) and verification indicators, with large, highly significant coefficients for mid-to-high ratings (D–HR). The intercept is stable at around 15.1, representing the baseline Interest at the reference levels. This setup achieves a good balance between explanatory power and interpretability: the ratings and verification status provide clear, actionable signals about pricing.
