@@ -1,7 +1,7 @@
 # Loan Interest Rates Analysis with Python
 
 ## Overview
-I've joined a fintech startup tasked with improving customer loan offers. Using the 🔗Bondora P2P Loans dataset, I'll build build insights about what factors help determine a person's interest rate. I will work your way to creating a predictive model to estimate loan interest rates, which will guide your company in personalizing loan terms efficiently.
+I've joined a fintech startup tasked with improving customer loan offers. Using the [Bondora P2P Loans](https://www.kaggle.com/datasets/marcobeyer/bondora-p2p-loans?select=LoanData.csv) dataset, I'll build build insights about what factors help determine a person's interest rate. I will work your way to creating a predictive model to estimate loan interest rates, which will guide your company in personalizing loan terms efficiently.
 
 The features used in this project are:
 
