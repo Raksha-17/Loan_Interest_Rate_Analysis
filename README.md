@@ -121,6 +121,7 @@ To get my first model going I begin creating a simple linear regression. Based o
 <img width="482" height="296" alt="Screenshot (87)" src="https://github.com/user-attachments/assets/6ac40f06-b5a4-4517-a0a3-1f05daa75c17" />
 
 <img width="740" height="473" alt="Screenshot (88)" src="https://github.com/user-attachments/assets/3873a062-24c6-4807-82bc-a0a63025fe47" />
+
 Use this next cell to make some further analysis on my model. I are already given the line of best fit graph, but can add as many visualizations as I wish.
 
 <img width="687" height="129" alt="Screenshot (89)" src="https://github.com/user-attachments/assets/a14124f0-bcf5-4e41-8614-83b1979f1eb9" />
