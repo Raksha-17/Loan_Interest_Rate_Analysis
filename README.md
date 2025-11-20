@@ -91,6 +91,7 @@ I also want to investigate the relationship between certain numerical features a
 <img width="945" height="485" alt="Screenshot (83)" src="https://github.com/user-attachments/assets/461e50c2-54a1-47b5-a0aa-5f2c6204770f" />
 
 <img width="925" height="533" alt="Screenshot (85)" src="https://github.com/user-attachments/assets/794425bd-bebf-46c4-af75-4c36e9a59f4f" />
+
 #### Implication:
 * AmountOfPreviousLoansBeforeLoan (r = -0.175) This is the only feature among those four with a modest negative linear relationship to interest rate. In practical terms: Borrowers with more prior loans tend to receive slightly lower interest rates on new loans.Having more prior loans could signal reliability or familiarity with debt management, which modestly mitigates default risk, hence a cheaper rate.
 
@@ -106,6 +107,7 @@ I noticed that there are two similar columns, "AppliedAmount" and "Amount", in t
 If more than 5% of loans are approved for less than requested, the team may need to revise how loan amounts are communicated to applicants. Estimate this proportion using a confidence interval to support your recommendation.
 
 <img width="714" height="459" alt="Screenshot (86)" src="https://github.com/user-attachments/assets/05027a0d-5553-4aee-8548-0d0b0564c636" />
+
 The proportion of loans where the requested amount differs from the given amount is pretty small, so it should be safe to only analyze one of those columns.
 
 ## Task 5: Modelling the Interest Rate
@@ -124,6 +126,7 @@ Use this next cell to make some further analysis on my model. I are already give
 <img width="687" height="129" alt="Screenshot (89)" src="https://github.com/user-attachments/assets/a14124f0-bcf5-4e41-8614-83b1979f1eb9" />
 
 <img width="581" height="451" alt="Screenshot (90)" src="https://github.com/user-attachments/assets/898aad9e-dc77-41ac-84ae-f81e84df99d0" />
+
 The predictor AmountOfPreviousLoansBeforeLoan has a statistically significant negative association with Interest (coefficient ≈ -0.0006, p < 0.001), but the model’s R-squared is only 0.031. So it’s unlikely this single predictor meaningfully explains variability in interest.
 
 
